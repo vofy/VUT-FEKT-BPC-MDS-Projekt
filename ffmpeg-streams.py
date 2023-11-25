@@ -6,8 +6,8 @@ import subprocess
 def assign_uuids(streams):
     # Generate unique identifiers for each stream
     for stream in streams:
-        if ("key" not in stream):
-            stream["key"] = str(uuid.uuid4())
+        if ("uuid" not in stream):
+            stream["uuid"] = str(uuid.uuid4())
 
 def main():
     CONFIG_PATH = "./config.toml"
@@ -42,7 +42,7 @@ def main():
         ffstream = ffmpeg.merge_outputs(*ffstreams_out)
         ffmpeg.run_async(ffstream)
 
-        print("Stream {} started".format(stream["key"]))
+        print("Stream {} started".format(stream["uuid"]))
 
 if __name__ == '__main__':
     main()
