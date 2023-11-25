@@ -34,7 +34,7 @@ def main():
             if (scale <= src_scale):
                 ffstreams_out.append(
                     ffmpeg.output(ffstream_in, 
-                                  "{}/{}_{}.flv".format(config["output"]["dst"], stream["key"], scale), 
+                                  "{}/{}_{}.flv".format(config["output"]["dst"], stream["uuid"], scale), 
                                   vcodec="libx264", 
                                   preset="veryfast", 
                                   r=10))

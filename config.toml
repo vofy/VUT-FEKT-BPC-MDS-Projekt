@@ -1,22 +1,22 @@
 [[input]]
 name = "Domažlice, Czech Republic"
 src = "http://46.23.53.116:8080/cgi-bin/viewer/video.jpg"
-key = "e7472d3c-f072-4cdd-be98-e4a3d717beeb"
+uuid = "e7472d3c-f072-4cdd-be98-e4a3d717beeb"
 
 [[input]]
 name = "Coburg, Germany"
 src = "http://217.24.53.18:80/cgi-bin/faststream.jpg?stream=half&fps=15&rand=COUNTER"
-key = "95d6cb6b-99f7-4ca0-9afc-86bbe63afa35"
+uuid = "95d6cb6b-99f7-4ca0-9afc-86bbe63afa35"
 
 [[input]]
 name = "Bayonne, France"
 src = "http://193.142.128.20:80/mjpg/video.mjpg"
-key = "bb962ecd-f3d8-4d25-b835-544e8f6df5af"
+uuid = "bb962ecd-f3d8-4d25-b835-544e8f6df5af"
 
 [[input]]
 name = "Gatwick, United Kingdom"
 src = "http://80.229.42.13:80/SnapshotJPEG?Resolution=640x480&amp;Quality=Clarity&amp;1700853676"
-key = "56d229bb-a245-4b7c-bfde-91d9392e9fa2"
+uuid = "56d229bb-a245-4b7c-bfde-91d9392e9fa2"
 
 [output]
 dst = "rtmp://localhost/hls"
