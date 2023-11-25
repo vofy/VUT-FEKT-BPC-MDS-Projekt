@@ -1,0 +1,27 @@
+html, body {
+    width: 100vw;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.video {
+    cursor: pointer !important;
+}
+
+.card > .card-img-top {
+    display: block;
+}
+
+.card > #hlsPreview {
+    display: none;
+}
+
+.card:hover > .card-img-top {
+    display: none;
+}
+
+.card:hover > #hlsPreview {
+    display: block;
+}
