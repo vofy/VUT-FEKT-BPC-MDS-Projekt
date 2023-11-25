@@ -1,0 +1,16 @@
+[Unit]
+Description=FFmpeg service which broadcasts internet cameras
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=forking
+WorkingDirectory=/var/BPC-MDS-Projekt
+ExecStart=/var/BPC-MDS-Projekt/venv/bin/python /var/BPC-MDS-Projekt/ffmpeg-streams.py
+KillSignal=SIGQUIT
+TimeoutStopSec=5
+KillMode=mixed
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

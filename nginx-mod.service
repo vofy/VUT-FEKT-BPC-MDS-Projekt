@@ -1,0 +1,19 @@
+[Unit]
+Description=The nginx HTTP and reverse proxy server
+After=network-online.target remote-fs.target nss-lookup.target
+Wants=network-online.target
+
+[Service]
+Type=forking
+PIDFile=/run/nginx-mod.pid
+ExecStartPre=/usr/bin/rm -f /run/nginx-mod.pid
+ExecStartPre=/usr/sbin/nginx-mod -t
+ExecStart=/usr/sbin/nginx-mod
+ExecReload=/usr/sbin/nginx-mod -s reload
+KillSignal=SIGQUIT
+TimeoutStopSec=5
+KillMode=mixed
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
