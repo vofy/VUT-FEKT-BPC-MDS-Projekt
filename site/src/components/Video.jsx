@@ -6,15 +6,26 @@ import {
   Card,
   CardBody,
   Heading,
+  Icon,
   Image,
+  Stack,
+  Text,
 } from "@chakra-ui/react";
 import VideoJS from "./VideoJS";
+import { FiCameraOff } from "react-icons/fi";
+import { videoModalDataState } from "./../state/atoms";
+import { useRecoilState } from "recoil";
 
 export default function Video(props) {
   const playerRef = React.useRef(null);
 
+  const [data, setData] = useRecoilState(videoModalDataState);
+
   const videoJsOptions = {
     responsive: true,
+    autoplay: true,
+    muted: true,
+    controls: false,
     fluid: true,
     sources: [
       {
@@ -37,19 +48,37 @@ export default function Video(props) {
     });
   };
 
+  const handleModalOpen = () => {
+    setData({
+      uuid: props.uuid,
+      title: props.title
+    });
+    props.onVideoModalOpen();
+  }
+
   return (
-    <Card overflow="hidden" role="group" onClick={props.onVideoModalOpen}>
+    <Card overflow="hidden" role="group" onClick={handleModalOpen}>
       <CardBody p={0} role="group">
         <Box
           pointerEvents="none"
           display="block"
           _groupHover={{ display: "none" }}
         >
-          <AspectRatio maxW="560px" ratio={16 / 9} _groupHover={{ display: "none" }}>
+          <AspectRatio
+            maxW="560px"
+            ratio={16 / 9}
+            _groupHover={{ display: "none" }}
+          >
             <Image
               w={100}
               h={100}
               src={"https://mds.vofy.tech/hls/" + props.uuid + ".webp"}
+              fallback={
+                <Stack direction={"column"}>
+                  <Icon as={FiCameraOff} size={70} height={"unset"} width={"unset"}/>
+                  <Text>Preview not available</Text>
+                </Stack>
+              }
             />
           </AspectRatio>
         </Box>

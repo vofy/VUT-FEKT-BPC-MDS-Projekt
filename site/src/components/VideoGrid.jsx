@@ -30,6 +30,6 @@ export default function VideoGrid(props) {
 }
 
 VideoGrid.propTypes = {
-  streams: PropTypes.object,
+  streams: PropTypes.array,
   onVideoModalOpen: PropTypes.func,
 }
