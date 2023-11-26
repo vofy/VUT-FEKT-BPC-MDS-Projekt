@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useDisclosure } from "react";
 import { Card, CardBody, Grid, GridItem, Text } from "@chakra-ui/react";
 import Video from "./Video";
 
