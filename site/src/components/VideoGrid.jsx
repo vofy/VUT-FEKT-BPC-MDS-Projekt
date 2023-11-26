@@ -1,10 +1,8 @@
-import React, { useDisclosure } from "react";
-import { Card, CardBody, Grid, GridItem, Text } from "@chakra-ui/react";
+import PropTypes from 'prop-types'
+import { Grid, GridItem } from "@chakra-ui/react";
 import Video from "./Video";
 
 export default function VideoGrid(props) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
   return (
     <Grid
       templateColumns={{
@@ -17,15 +15,21 @@ export default function VideoGrid(props) {
       gap={6}
       p={5}
     >
-      {props.streams.map((stream) => (
-        <GridItem w="100%" key={stream.uuid}>
-          <Video
-            uuid={stream.uuid}
-            title={stream.title}
-            onClick={onOpen}
-          ></Video>
-        </GridItem>
-      ))}
+      {props.streams &&
+        props.streams.map((stream) => (
+          stream.uuid && <GridItem w="100%" key={stream.uuid}>
+            <Video
+              uuid={stream.uuid}
+              title={stream.title}
+              onVideoModalOpen={props.onVideoModalOpen}
+            ></Video>
+          </GridItem>
+        ))}
     </Grid>
   );
+}
+
+VideoGrid.propTypes = {
+  streams: PropTypes.object,
+  onVideoModalOpen: PropTypes.func,
 }

@@ -1,5 +1,13 @@
 import React from "react";
-import { Box, Card, CardBody, Heading, Image } from "@chakra-ui/react";
+import PropTypes from "prop-types";
+import {
+  AspectRatio,
+  Box,
+  Card,
+  CardBody,
+  Heading,
+  Image,
+} from "@chakra-ui/react";
 import VideoJS from "./VideoJS";
 
 export default function Video(props) {
@@ -30,12 +38,26 @@ export default function Video(props) {
   };
 
   return (
-    <Card overflow="hidden" role="group">
+    <Card overflow="hidden" role="group" onClick={props.onVideoModalOpen}>
       <CardBody p={0} role="group">
-        <Box pointerEvents="none" display='block' _groupHover={{display: 'none'}}>
-            <Image w={100} h={100} src={"https://mds.vofy.tech/hls/" + props.uuid + ".webp"}></Image>
+        <Box
+          pointerEvents="none"
+          display="block"
+          _groupHover={{ display: "none" }}
+        >
+          <AspectRatio maxW="560px" ratio={16 / 9} _groupHover={{ display: "none" }}>
+            <Image
+              w={100}
+              h={100}
+              src={"https://mds.vofy.tech/hls/" + props.uuid + ".webp"}
+            />
+          </AspectRatio>
         </Box>
-        <Box pointerEvents="none" display='none' _groupHover={{display: 'block'}}>
+        <Box
+          pointerEvents="none"
+          display="none"
+          _groupHover={{ display: "block" }}
+        >
           <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
         </Box>
         <Heading as="h1" size="md" m={4}>
@@ -45,3 +67,9 @@ export default function Video(props) {
     </Card>
   );
 }
+
+Video.propTypes = {
+  uuid: PropTypes.string,
+  title: PropTypes.string,
+  onVideoModalOpen: PropTypes.func,
+};

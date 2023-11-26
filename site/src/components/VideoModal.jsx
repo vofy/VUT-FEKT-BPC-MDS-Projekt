@@ -1,26 +1,31 @@
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter, ModalCloseButton, Button } from "@chakra-ui/react"
+import PropTypes from 'prop-types';
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+} from "@chakra-ui/react";
+import Video from './Video';
 
 export default function VideoModal(props) {
-    return (
-      <>
-        <Button onClick={onOpen}>Open Modal</Button>
-  
-        <Modal isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Modal Title</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-            </ModalBody>
-  
-            <ModalFooter>
-              <Button colorScheme='blue' mr={3} onClick={onClose}>
-                Close
-              </Button>
-              <Button variant='ghost'>Secondary Action</Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      </>
-    )
-  }
+  return (
+    <Modal {...props}>
+      <ModalOverlay />
+      <ModalContent>
+        <ModalHeader>Modal Title</ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <Video />
+        </ModalBody>
+      </ModalContent>
+    </Modal>
+  );
+}
+
+
+VideoModal.propTypes = {
+  isVideoModalOpen: PropTypes.bool,
+  onVideoModalClose: PropTypes.func,
+}

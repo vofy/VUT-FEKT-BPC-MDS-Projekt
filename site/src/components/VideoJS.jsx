@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import videojs from 'video.js';
 import 'video.js/dist/video-js.css';
 
-export const VideoJS = (props) => {
+export default function VideoJS(props) {
   const videoRef = React.useRef(null);
   const playerRef = React.useRef(null);
   const {options, onReady} = props;
@@ -51,4 +52,7 @@ export const VideoJS = (props) => {
   );
 }
 
-export default VideoJS;
+VideoJS.propTypes = {
+  options: PropTypes.object,
+  onReady: PropTypes.func,
+}
