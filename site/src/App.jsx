@@ -3,6 +3,7 @@ import '@fontsource/poppins';
 
 import VideoGrid from './components/VideoGrid';
 import Header from './components/Header';
+import VideoModal from './components/VideoModal';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -13,9 +14,9 @@ function App() {
 
   return (
     <>
-      <title>test</title>
-      <Header></Header>
+      <Header />
       <VideoGrid />
+      <VideoModal />
     </>
   )
 }
