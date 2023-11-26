@@ -40,7 +40,7 @@ def main():
                                   r=10))
             
         ffstream = ffmpeg.merge_outputs(*ffstreams_out)
-        ffmpeg.run_async(ffstream)
+        ffmpeg.run_async(ffstream, quiet=True)
 
         print("Stream {} started".format(stream["uuid"]))
 
