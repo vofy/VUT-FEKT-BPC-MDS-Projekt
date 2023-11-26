@@ -12,11 +12,30 @@ function App() {
     document.title = 'MDS-Player';
   }, []);
 
+  var streams = [
+    {
+      title: "Tma",
+      uuid: "e7472d3c-f072-4cdd-be98-e4a3d717beeb",
+    },
+    {
+      title: "Tma",
+      uuid: "e7472d3c-f072-4cdd-be98-e4a3d717beeb",
+    },
+    {
+      title: "Tma",
+      uuid: "e7472d3c-f072-4cdd-be98-e4a3d717beeb",
+    },
+    {
+      title: "Tma",
+      uuid: "e7472d3c-f072-4cdd-be98-e4a3d717beeb",
+    }
+  ];
+
   return (
     <>
       <Header />
       <VideoGrid />
-      <VideoModal />
+      <VideoModal streams={streams} />
     </>
   )
 }

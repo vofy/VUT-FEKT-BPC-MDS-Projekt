@@ -5,13 +5,6 @@ import Video from "./Video";
 export default function VideoGrid(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  var streams = [
-    {
-      title: "Tma",
-      uuid: "e7472d3c-f072-4cdd-be98-e4a3d717beeb",
-    },
-  ];
-
   return (
     <Grid
       templateColumns={{
@@ -24,7 +17,7 @@ export default function VideoGrid(props) {
       gap={6}
       p={5}
     >
-      {streams.map((stream) => (
+      {props.streams.map((stream) => (
         <GridItem w="100%" key={stream.uuid}>
           <Video
             uuid={stream.uuid}
