@@ -7,7 +7,7 @@ import {
   ModalBody,
   ModalCloseButton,
   Box,
-  Container,
+  Flex,
 } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
 import { videoModalDataState } from "./../state/atoms";
@@ -51,9 +51,9 @@ export default function VideoModal(props) {
         <ModalHeader>{data.title}</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <Container maxWidth={"unset"} maxHeight={"100vh"} >
+          <Box maxWidth={"100vh"}>
             <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
-          </Container>
+          </Box>
         </ModalBody>
       </ModalContent>
     </Modal>

@@ -26,7 +26,7 @@ def main():
                                             "-of", "csv=s=x:p=0", str(stream["src"])], 
                                             stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True).stdout.read())
             
-        ffstream_in = ffmpeg.input(stream["src"], loop=1, use_wallclock_as_timestamps=1)
+        ffstream_in = ffmpeg.input(stream["src"], use_wallclock_as_timestamps=1)
             
         ffstreams_out = []
 
