@@ -9,8 +9,8 @@ src = "http://217.24.53.18:80/cgi-bin/faststream.jpg"
 uuid = "95d6cb6b-99f7-4ca0-9afc-86bbe63afa35"
 
 [[input]]
-name = "Bayonne, France"
-src = "http://193.142.128.20:80/mjpg/video.mjpg"
+name = "Lexington-Fayette, United States"
+src = "http://64.191.148.57:80/mjpg/video.mjpg"
 uuid = "bb962ecd-f3d8-4d25-b835-544e8f6df5af"
 
 [[input]]
