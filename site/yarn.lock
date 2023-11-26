@@ -1299,6 +1299,11 @@
   resolved "https://registry.yarnpkg.com/@fontsource/poppins/-/poppins-5.0.8.tgz#a1c5540aedb3719a36eba5c7c5dfaa3aed3c9f80"
   integrity sha512-P8owfYWluoUY5Nyzk4gT/L6LmLmseP6ezFWhj6VBUa5pRIdnCvNJpoQ6i/vhekjtJOfqX6nKlB+LCttoUl2GQQ==
 
+"@fontsource/silkscreen@^5.0.17":
+  version "5.0.17"
+  resolved "https://registry.yarnpkg.com/@fontsource/silkscreen/-/silkscreen-5.0.17.tgz#b52c7ae97536187d532e46f5d9748dfb789b4756"
+  integrity sha512-Otai6IwB5+yPujcnlT5uFwpUrs/qS45umfKjMt2A0eQ1jdt8Dw6/xkVb5c9IZ/nWLc0W1PX7IvBv+W8eHVFoFQ==
+
 "@humanwhocodes/config-array@^0.11.13":
   version "0.11.13"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.13.tgz#075dc9684f40a531d9b26b0822153c1e832ee297"
