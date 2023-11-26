@@ -1,3 +1,5 @@
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter, ModalCloseButton, Button } from "@chakra-ui/react"
+
 export default function VideoModal(props) {
     return (
       <>
@@ -9,7 +11,6 @@ export default function VideoModal(props) {
             <ModalHeader>Modal Title</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <Lorem count={2} />
             </ModalBody>
   
             <ModalFooter>
