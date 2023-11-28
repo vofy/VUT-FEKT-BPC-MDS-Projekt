@@ -23,11 +23,11 @@ function App() {
       uuid: "e7472d3c-f072-4cdd-be98-e4a3d717beeb",
     },
     {
-      title: "Coburg, Germany",
+      title: "Valencia, Spain",
       uuid: "95d6cb6b-99f7-4ca0-9afc-86bbe63afa35",
     },
     {
-      title: "Bayonne, France",
+      title: "Lexington-Fayette, United States",
       uuid: "bb962ecd-f3d8-4d25-b835-544e8f6df5af",
     },
     {
