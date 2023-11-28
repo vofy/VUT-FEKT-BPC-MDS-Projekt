@@ -1,3 +1,4 @@
 {
     "javascript.validate.enable": false,
+    "python.analysis.autoImportCompletions": true,
 }
