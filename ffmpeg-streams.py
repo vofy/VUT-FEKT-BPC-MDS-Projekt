@@ -21,7 +21,7 @@ def main():
 
     for stream in config["input"]:
                     
-        ffstream = ffmpeg.input(stream["src"], loop=1, use_wallclock_as_timestamps=1)
+        ffstream = ffmpeg.input(stream["src"], use_wallclock_as_timestamps=1)
             
         ffstream = ffmpeg.output(ffstream, 
             "{}/{}.flv".format(config["output"]["dst"], stream["uuid"]), 
