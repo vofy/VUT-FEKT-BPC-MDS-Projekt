@@ -5,8 +5,8 @@ uuid = "e7472d3c-f072-4cdd-be98-e4a3d717beeb"
 loop = true
 
 [[input]]
-name = "Valencia, Spain"
-src = "http://79.108.238.98:9000/mjpg/video.mjpg"
+name = "Prestice, Czech Republic"
+src = "http://46.23.58.82:8080/cgi-bin/viewer/video.jpg"
 uuid = "95d6cb6b-99f7-4ca0-9afc-86bbe63afa35"
 loop = false
 
@@ -20,7 +20,7 @@ loop = false
 name = "Gatwick, United Kingdom"
 src = "http://80.229.42.13:80/SnapshotJPEG?Resolution=640x480&amp;Quality=Clarity&amp;1700853676"
 uuid = "56d229bb-a245-4b7c-bfde-91d9392e9fa2"
-loop = false
+loop = true
 
 [output]
 dst = "rtmp://localhost/hls"
