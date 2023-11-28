@@ -28,7 +28,7 @@ def main():
             
         kwargs['use_wallclock_as_timestamps'] = 1
         
-        ffstream = ffmpeg.input(stream["src"], **kvargs)
+        ffstream = ffmpeg.input(stream["src"], **kwargs)
             
         ffstream = ffmpeg.output(ffstream, 
             "{}/{}.flv".format(config["output"]["dst"], stream["uuid"]), 
