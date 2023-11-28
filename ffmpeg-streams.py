@@ -41,7 +41,7 @@ def main():
             
         ffstream = ffmpeg.merge_outputs(*ffstreams_out)
         # ffmpeg.run_async(ffstream, quiet=True)
-        print(ffmpeg.get_args(ffstream))
+        print(" ".join(ffmpeg.get_args(ffstream)))
 
         print("Stream {} started".format(stream["uuid"]))
 
