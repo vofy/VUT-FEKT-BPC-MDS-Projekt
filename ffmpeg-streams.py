@@ -20,8 +20,12 @@ def main():
         toml.dump(config, file)
 
     for stream in config["input"]:
-                    
-        ffstream = ffmpeg.input(stream["src"], use_wallclock_as_timestamps=1)
+        if (stream["loop"] is True):
+            loop = 1
+        else:
+            loop = None
+        
+        ffstream = ffmpeg.input(stream["src"], loop=loop, use_wallclock_as_timestamps=1)
             
         ffstream = ffmpeg.output(ffstream, 
             "{}/{}.flv".format(config["output"]["dst"], stream["uuid"]), 
