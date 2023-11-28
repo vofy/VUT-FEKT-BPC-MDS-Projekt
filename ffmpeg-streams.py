@@ -21,7 +21,7 @@ def main():
 
     for stream in config["input"]:
         
-        kvargs = {}
+        kwargs = {}
         
         if (stream["loop"] is True):
             kwargs['loop'] = 1
