@@ -7,7 +7,6 @@ import {
   ModalBody,
   ModalCloseButton,
   Box,
-  Flex,
 } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
 import { videoModalDataState } from "./../state/atoms";
@@ -29,6 +28,15 @@ export default function VideoModal(props) {
         type: "application/x-mpegURL",
       },
     ],
+    controlBar: {
+      children: [
+        "playToggle",
+        "progressControl",
+        "volumePanel",
+        "qualitySelector",
+        "fullscreenToggle",
+      ],
+    }
   };
 
   const handlePlayerReady = (player) => {
