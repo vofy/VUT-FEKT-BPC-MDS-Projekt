@@ -23,7 +23,7 @@ function App() {
       uuid: "e7472d3c-f072-4cdd-be98-e4a3d717beeb",
     },
     {
-      title: "Prestice, Czech Republic",
+      title: "Valencia, Spain",
       uuid: "95d6cb6b-99f7-4ca0-9afc-86bbe63afa35",
     },
     {
