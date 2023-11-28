@@ -23,7 +23,7 @@ def main():
                     
         ffstream = ffmpeg.input(stream["src"], loop=1, use_wallclock_as_timestamps=1)
             
-        ffstream = ffmpeg.output(ffstream_in, 
+        ffstream = ffmpeg.output(ffstream, 
             "{}/{}.flv".format(config["output"]["dst"], stream["uuid"]), 
             vcodec="libx264", 
             preset="veryfast", 
