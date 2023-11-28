@@ -8,7 +8,7 @@ loop = true
 name = "Valencia, Spain"
 src = "http://79.108.238.98:9000/mjpg/video.mjpg"
 uuid = "95d6cb6b-99f7-4ca0-9afc-86bbe63afa35"
-loop = false
+loop = true
 
 [[input]]
 name = "Lexington-Fayette, United States"
