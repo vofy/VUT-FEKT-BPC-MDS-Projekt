@@ -14,7 +14,7 @@ function App() {
   } = useDisclosure();
 
   useEffect(() => {
-    document.title = "MDS-Player";
+    document.title = "Pexel";
   }, []);
 
   const streams = [
