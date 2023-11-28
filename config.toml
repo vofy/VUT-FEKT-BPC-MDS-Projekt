@@ -23,5 +23,5 @@ uuid = "56d229bb-a245-4b7c-bfde-91d9392e9fa2"
 loop = true
 
 [output]
-dst = "rtmp://localhost/hls"
+dst = "rtmp://localhost/live"
 scales = [ 360, 480, 720,]
