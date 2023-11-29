@@ -29,6 +29,8 @@ const Video = (props) => {
     muted: true,
     controls: false,
     fluid: true,
+    aspectRatio: '16:9',
+    fill: true,
     sources: [
       {
         src: "https://mds.vofy.tech/hls/" + props.uuid + ".m3u8",
@@ -67,13 +69,11 @@ const Video = (props) => {
           _groupHover={{ display: "none" }}
         >
           <AspectRatio
-            maxW="560px"
             ratio={16 / 9}
             _groupHover={{ display: "none" }}
           >
             <Image
-              w={100}
-              h={100}
+              w={"100%"}
               src={"https://mds.vofy.tech/hls/" + props.uuid + ".png"}
               fallback={
                 <Stack direction={"column"}>
