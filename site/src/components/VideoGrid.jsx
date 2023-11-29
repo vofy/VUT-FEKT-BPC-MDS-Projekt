@@ -74,7 +74,7 @@ const Video = (props) => {
             <Image
               w={100}
               h={100}
-              src={"https://mds.vofy.tech/hls/" + props.uuid + ".webp"}
+              src={"https://mds.vofy.tech/hls/" + props.uuid + ".png"}
               fallback={
                 <Stack direction={"column"}>
                   <Icon
