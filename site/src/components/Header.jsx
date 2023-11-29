@@ -18,7 +18,7 @@ export default function Header() {
       <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
         <Stack direction={"row"} alignItems={"center"} height={"100%"}>
           <Image src="pexel.svg" height="100%" p={3} />
-          <Text fontSize={30} fontFamily={"Silkscreen"}>Pexel</Text>
+          <Text fontSize={30} fontFamily={"Silkscreen"} paddingBottom={1.5}>Pexel</Text>
         </Stack>
         <Flex alignItems={"center"}>
           <Stack direction={"row"} spacing={7}>
