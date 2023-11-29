@@ -73,5 +73,5 @@ button:focus-visible {
 }
 
 .vjs-tech {
-  object-fit: fill !important;
+  object-fit: cover !important;
 }

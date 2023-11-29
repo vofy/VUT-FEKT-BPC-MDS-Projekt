@@ -30,7 +30,6 @@ const Video = (props) => {
     controls: false,
     fluid: true,
     aspectRatio: '16:9',
-    fill: true,
     sources: [
       {
         src: "https://mds.vofy.tech/hls/" + props.uuid + ".m3u8",
