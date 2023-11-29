@@ -53,7 +53,7 @@ export default function VideoModal(props) {
   };
 
   return (
-    <Modal {...props} size={"full"}>
+    <Modal {...props} size={"xl"}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>{data.title}</ModalHeader>
