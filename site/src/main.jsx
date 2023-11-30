@@ -5,9 +5,20 @@ import App from "./App.jsx";
 import "./index.css";
 
 const theme = extendTheme({
-  initialColorMode: 'dark',
+  initialColorMode: "dark",
   useSystemColorMode: false,
-})
+  components: {
+    Modal: {
+      sizes: {
+        xl: {
+          Content: {
+            w: "1900px",
+          },
+        },
+      },
+    },
+  },
+});
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ChakraProvider theme={theme}>

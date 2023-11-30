@@ -56,10 +56,10 @@ export default function VideoModal(props) {
     <Modal {...props} size={"xl"}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>{data.title}</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
-          <Box maxWidth={"100vh"}>
+        <ModalHeader padding={4}>{data.title}</ModalHeader>
+        <ModalCloseButton marginY={1.5} />
+        <ModalBody padding={0}>
+          <Box maxWidth={"100vh"} padding={4} paddingTop={0}>
             <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
           </Box>
         </ModalBody>
