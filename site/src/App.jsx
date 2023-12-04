@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDisclosure } from "@chakra-ui/react";
 import "@fontsource/poppins";
-import { parse as tomlParse } from 'smol-toml'
+import { parse as tomlParse } from "smol-toml";
 
 import VideoGrid from "./components/VideoGrid";
 import Header from "./components/Header";
@@ -14,18 +14,19 @@ function App() {
     onClose: onVideoModalClose,
   } = useDisclosure();
 
-  const [availableStreamUUIDs, setAvailableStreamUUIDs] = useState([]);
+  const [streams, setStreams] = useState([]);
 
   useEffect(() => {
     document.title = "Pexel";
   }, []);
 
   useEffect(() => {
+    let inputs = {};
+
     fetch("https://mds.vofy.tech/config.toml")
       .then((response) => response.text())
       .then((data) => {
-        var config = tomlParse(data);
-        console.dir(config);
+        inputs = tomlParse(data)["input"];
       })
       .catch(console.error);
 
@@ -41,34 +42,25 @@ function App() {
           XPathResult.ANY_TYPE,
           null
         );
+
+        let availableStreams = [];
+
         let node = nodes.iterateNext();
         while (node) {
-          let streamUUID = node.getElementsByTagName("name")[0].firstChild.nodeValue;
-          setAvailableStreamUUIDs([...availableStreamUUIDs, streamUUID]);
+          availableStreams.push(
+            inputs.find(
+              (input) =>
+                input.uuid ===
+                node.getElementsByTagName("name")[0].firstChild.nodeValue
+            )
+          );
           node = nodes.iterateNext();
         }
+
+        setStreams(availableStreams);
       })
       .catch(console.error);
   }, []);
-
-  const streams = [
-    {
-      title: "Domažlice, Czech Republic",
-      uuid: "e7472d3c-f072-4cdd-be98-e4a3d717beeb",
-    },
-    {
-      title: "Valencia, Spain",
-      uuid: "95d6cb6b-99f7-4ca0-9afc-86bbe63afa35",
-    },
-    {
-      title: "Lexington-Fayette, United States",
-      uuid: "bb962ecd-f3d8-4d25-b835-544e8f6df5af",
-    },
-    {
-      title: "Gatwick, United Kingdom",
-      uuid: "56d229bb-a245-4b7c-bfde-91d9392e9fa2",
-    },
-  ];
 
   return (
     <>

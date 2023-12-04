@@ -27,16 +27,7 @@ export default function VideoModal(props) {
         src: "https://mds.vofy.tech/hls/" + data.uuid + ".m3u8",
         type: "application/x-mpegURL",
       },
-    ],
-    controlBar: {
-      children: [
-        "playToggle",
-        "progressControl",
-        "volumePanel",
-        "qualitySelector",
-        "fullscreenToggle",
-      ],
-    }
+    ]
   };
 
   const handlePlayerReady = (player) => {
@@ -56,7 +47,7 @@ export default function VideoModal(props) {
     <Modal {...props} size={"xl"}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader padding={4}>{data.title}</ModalHeader>
+        <ModalHeader padding={4}>{data.name}</ModalHeader>
         <ModalCloseButton marginY={1.5} />
         <ModalBody padding={0}>
           <Box maxWidth={"100vh"} padding={4} paddingTop={0}>

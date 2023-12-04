@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import videojs from "video.js";
 import "video.js/dist/video-js.css";
+import videojsqualityselector from "videojs-hls-quality-selector";
 
 export default function VideoJS(props) {
   const videoRef = React.useRef(null);
@@ -28,6 +29,10 @@ export default function VideoJS(props) {
       const player = playerRef.current;
 
       player.autoplay(options.autoplay);
+      player.hlsQualitySelector = videojsqualityselector;
+      player.hlsQualitySelector({
+        displayCurrentQuality: true,
+      });
       player.src(options.sources);
     }
   }, [options, videoRef]);

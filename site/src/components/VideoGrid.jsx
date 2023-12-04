@@ -53,8 +53,8 @@ const Video = (props) => {
 
   const handleModalOpen = () => {
     setData({
+      name: props.name,
       uuid: props.uuid,
-      title: props.title,
     });
     props.onVideoModalOpen();
   };
@@ -96,7 +96,7 @@ const Video = (props) => {
           <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
         </Box>
         <Heading as="h1" size="md" m={4}>
-          {props.title}
+          {props.name}
         </Heading>
       </CardBody>
     </Card>
@@ -105,7 +105,7 @@ const Video = (props) => {
 
 Video.propTypes = {
   uuid: PropTypes.string,
-  title: PropTypes.string,
+  name: PropTypes.string,
   onVideoModalOpen: PropTypes.func,
 };
 
@@ -129,7 +129,7 @@ export default function VideoGrid(props) {
               <GridItem w="100%" key={stream.uuid}>
                 <Video
                   uuid={stream.uuid}
-                  title={stream.title}
+                  name={stream.name}
                   onVideoModalOpen={props.onVideoModalOpen}
                 ></Video>
               </GridItem>
