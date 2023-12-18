@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { useDisclosure } from "@chakra-ui/react";
+import { Heading, Flex, useDisclosure, Spacer } from "@chakra-ui/react";
 import "@fontsource/poppins";
-import { parse as tomlParse } from "smol-toml";
+import { MdError } from "react-icons/md";
+
+import getAvailableStreams from "./lib/available-streams";
 
 import VideoGrid from "./components/VideoGrid";
 import Header from "./components/Header";
@@ -18,54 +20,28 @@ function App() {
 
   useEffect(() => {
     document.title = "Pexel";
-  }, []);
-
-  useEffect(() => {
-    let inputs = {};
-
-    fetch("https://mds.vofy.tech/config.toml")
-      .then((response) => response.text())
-      .then((data) => {
-        inputs = tomlParse(data)["input"];
-      })
-      .catch(console.error);
-
-    fetch("https://mds.vofy.tech/stat")
-      .then((response) => response.text())
-      .then((data) => {
-        const parser = new DOMParser();
-        const xml = parser.parseFromString(data, "text/xml");
-        const nodes = xml.evaluate(
-          "/rtmp/server/application[./name='live']/live/stream",
-          xml,
-          null,
-          XPathResult.ANY_TYPE,
-          null
-        );
-
-        let availableStreams = [];
-
-        let node = nodes.iterateNext();
-        while (node) {
-          availableStreams.push(
-            inputs.find(
-              (input) =>
-                input.uuid ===
-                node.getElementsByTagName("name")[0].firstChild.nodeValue
-            )
-          );
-          node = nodes.iterateNext();
-        }
-
-        setStreams(availableStreams);
-      })
-      .catch(console.error);
+    setStreams(getAvailableStreams());
+    console.log(getAvailableStreams());
   }, []);
 
   return (
     <>
       <Header />
-      <VideoGrid streams={streams} onVideoModalOpen={onVideoModalOpen} />
+      {streams.length > 0 ? (
+        <VideoGrid streams={streams} onVideoModalOpen={onVideoModalOpen} />
+      ) : (
+        <Flex
+          direction={"column"}
+          spacing={4}
+          alignItems={"center"}
+          justifyContent={"center"}
+          height={"100%"}
+        >
+          <MdError size={50} />
+          <Heading as='h1' size='lg' margin={8}>Není vysílaný žádný přenos</Heading>
+        </Flex>
+      )}
+
       <VideoModal isOpen={isVideoModalOpen} onClose={onVideoModalClose} />
     </>
   );
