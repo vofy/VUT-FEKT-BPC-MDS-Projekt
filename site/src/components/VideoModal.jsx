@@ -71,7 +71,7 @@ export default function VideoModal(props) {
             <Heading as="h2" size="sm" my={2}>
               RTMP stream
             </Heading>
-            <Code my={1}>{data.stream}</Code>
+            <Code my={1}>{data.rtmp}</Code>
             <Button my={1} onClick={onCopy}>
               {hasCopied ? "Zkopírováno!" : "Kopírovat"}
             </Button>

@@ -75,7 +75,7 @@ const Video = (props) => {
         >
           <AspectRatio ratio={16 / 9}>
             <Replay
-              source={props.stream}
+              source={props.stream.stream}
               initialPlaybackProps={{ isPaused: false, isMuted: true }}
               options={replayOptions}
             >
