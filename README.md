@@ -23,6 +23,7 @@ pip install -r requirements.txt
 # Kompilace nginx
 
 ```sh
+cd /opt
 mkdir nginx-mod
 cd nginx-mod
 
