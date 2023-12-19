@@ -56,7 +56,7 @@ const Video = (props) => {
           <AspectRatio ratio={16 / 9} _groupHover={{ display: "none" }}>
             <Image
               w={"100%"}
-              src={"https://mds.vofy.tech/hls/" + props.uuid + ".png"}
+              src={props.stream.thumbnail}
               fallback={
                 <Stack direction={"column"}>
                   <Icon
@@ -78,7 +78,7 @@ const Video = (props) => {
         >
           <AspectRatio ratio={16 / 9}>
               <Replay
-                source={"https://mds.vofy.tech/hls/" + props.uuid + ".m3u8"}
+                source={props.stream}
                 initialPlaybackProps={{ isPaused: false, isMuted: true }}
                 options={replayOptions}
               >
@@ -87,7 +87,7 @@ const Video = (props) => {
           </AspectRatio>
         </Box>
         <Heading as="h1" size="md" m={4}>
-          {props.name}
+          {props.stream.name}
         </Heading>
       </CardBody>
     </Card>
@@ -95,8 +95,7 @@ const Video = (props) => {
 };
 
 Video.propTypes = {
-  uuid: PropTypes.string,
-  name: PropTypes.string,
+  stream: PropTypes.object,
   onVideoModalOpen: PropTypes.func,
 };
 
@@ -119,8 +118,7 @@ export default function VideoGrid(props) {
             stream.uuid && (
               <GridItem w="100%" key={stream.uuid}>
                 <Video
-                  uuid={stream.uuid}
-                  name={stream.name}
+                  stream={stream}
                   onVideoModalOpen={props.onVideoModalOpen}
                 ></Video>
               </GridItem>

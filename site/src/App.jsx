@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Heading, Flex, useDisclosure, Box } from "@chakra-ui/react";
+import { Heading, Flex, useDisclosure } from "@chakra-ui/react";
 import "@fontsource/poppins";
 import { MdError } from "react-icons/md";
 import { parseConfig, parseStat } from "./lib/parse";
@@ -29,9 +29,19 @@ function App() {
     });
 
     parseStat("https://mds.vofy.tech/stat").then((data) => {
-      const availableStreams = data.map((name) =>
-        inputs.find((input) => input.uuid === name)
-      );
+      const availableStreams = data.map((name) => {
+        const stream = inputs.find((input) => input.uuid === name);
+
+        return {
+          name: stream.name,
+          uuid: stream.uuid,
+          thumbnail: "https://mds.vofy.tech/hls/" + stream.uuid + ".jpeg",
+          stream: "https://mds.vofy.tech/hls/" + stream.uuid + ".m3u8",
+          rtmp: "rtmp://mds.vofy.tech/live/" + stream.uuid
+        };
+      });
+
+      console.log(availableStreams);
 
       setStreams(availableStreams);
     });

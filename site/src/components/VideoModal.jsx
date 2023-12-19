@@ -47,7 +47,7 @@ export default function VideoModal(props) {
   };
 
   useEffect(() => {
-    setValue("rtmp://mds.vofy.tech/live/" + data.uuid);
+    setValue(data.rtmp);
   }, [data]);
 
   return (
@@ -59,7 +59,7 @@ export default function VideoModal(props) {
         <ModalBody padding={0}>
           <Box maxWidth={"100vh"} padding={4} paddingTop={0}>
             <Replay
-              source={"https://mds.vofy.tech/hls/" + data.uuid + ".m3u8"}
+              source={data.stream}
               initialPlaybackProps={{ isPaused: false }}
               options={replayOptions}
             >
@@ -69,7 +69,7 @@ export default function VideoModal(props) {
             <Heading as="h2" size="sm" my={2}>
               RTMP stream
             </Heading>
-            <Code my={1}>rtmp://mds.vofy.tech/live/{data.uuid}</Code>
+            <Code my={1}>{data.rtmp}</Code>
             <Button my={1} onClick={onCopy}>
               {hasCopied ? "Zkopírováno!" : "Kopírovat"}
             </Button>
