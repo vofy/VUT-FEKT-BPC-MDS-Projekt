@@ -27,11 +27,12 @@ def main():
             kwargs['loop'] = 1
             
         kwargs['use_wallclock_as_timestamps'] = 1
-        
+        kwargs['re'] = None
+
         ffstream = ffmpeg.input(stream["src"], **kwargs)
-            
-        ffstream = ffmpeg.output(ffstream, 
-            "{}/{}.flv".format(config["output"]["dst"], stream["uuid"]), 
+
+        ffstream = ffmpeg.output(ffstream,
+            "{}/{}.flv".format(config["output"]["dst"], stream["uuid"]),
             vcodec="libx264", 
             preset="veryfast", 
             r=10
