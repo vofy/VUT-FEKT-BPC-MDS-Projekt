@@ -1,6 +1,6 @@
 [[input]]
-name = "Oslo, Norway"
-src = "http://193.213.211.188:80/mjpg/video.mjpg"
+name = "Domažlice, Czech Republic"
+src = "http://46.23.53.116:8080/cgi-bin/viewer/video.jpg"
 uuid = "e7472d3c-f072-4cdd-be98-e4a3d717beeb"
 loop = true
 
