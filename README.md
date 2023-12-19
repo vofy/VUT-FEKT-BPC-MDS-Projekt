@@ -37,6 +37,7 @@ cd nginx-1.25.3
     --prefix=/var/pexel \
 	--sbin-path=/usr/sbin/nginx-mod \
 	--modules-path=/usr/lib/nginx-mod/modules \
+    --conf-path=/var/pexel/nginx-conf/nginx.conf \
     --http-client-body-temp-path=/var/lib/nginx-mod/body \
     --http-fastcgi-temp-path=/var/lib/nginx-mod/fastcgi \
     --http-proxy-temp-path=/var/lib/nginx-mod/proxy \
