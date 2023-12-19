@@ -7,16 +7,23 @@ import {
   ModalBody,
   ModalCloseButton,
   Box,
+  Heading,
+  Code,
+  Spacer,
+  Button,
 } from "@chakra-ui/react";
+import { useClipboard } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
 import { videoModalDataState } from "./../state/atoms";
 
 import { Replay } from "vimond-replay";
 import "vimond-replay/index.css";
 import HlsjsVideoStreamer from "vimond-replay/video-streamer/hlsjs";
+import { useEffect } from "react";
 
 export default function VideoModal(props) {
   const [data, setData] = useRecoilState(videoModalDataState);
+  const { onCopy, value, setValue, hasCopied } = useClipboard("");
 
   const replayOptions = {
     videoStreamer: {
@@ -38,6 +45,10 @@ export default function VideoModal(props) {
     },
   };
 
+  useEffect(() => {
+    setValue("rtmp://mds.vofy.tech/live/" + data.uuid);
+  }, [data]);
+
   return (
     <Modal {...props} size={"xl"}>
       <ModalOverlay />
@@ -53,6 +64,14 @@ export default function VideoModal(props) {
             >
               <HlsjsVideoStreamer />
             </Replay>
+            <Spacer my={5} />
+            <Heading as="h2" size="sm" my={2}>
+              RTMP stream
+            </Heading>
+            <Code my={1}>rtmp://mds.vofy.tech/live/{data.uuid}</Code>
+            <Button my={1} onClick={onCopy}>
+              {hasCopied ? "Zkopírováno!" : "Kopírovat"}
+            </Button>
           </Box>
         </ModalBody>
       </ModalContent>
