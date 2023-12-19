@@ -38,7 +38,7 @@ function App() {
           uuid: stream.uuid,
           thumbnail: mediaServer + "/hls/" + stream.uuid + ".jpeg",
           stream: mediaServer + "/hls/" + stream.uuid + ".m3u8",
-          rtmp: mediaServer + "/hls/" + stream.uuid + "_720",
+          rtmp: mediaServer + "/hls/" + stream.uuid + "_720.m3u8",
         };
       });
 
