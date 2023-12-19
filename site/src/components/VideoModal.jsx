@@ -38,7 +38,7 @@ export default function VideoModal(props) {
       includeControls: [
         "playPauseButton",
         "timeDisplay",
-        'timeline',
+        "timeline",
         "gotoLiveButton",
         "qualitySelector",
         "fullscreenButton",
@@ -54,7 +54,9 @@ export default function VideoModal(props) {
     <Modal {...props} size={"xl"}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader padding={4}>{data.name}</ModalHeader>
+        <ModalHeader padding={4}>
+          {data?.name ? data.name : "Vysílání bez názvu"}
+        </ModalHeader>
         <ModalCloseButton marginY={1.5} />
         <ModalBody padding={0}>
           <Box maxWidth={"100vh"} padding={4} paddingTop={0}>

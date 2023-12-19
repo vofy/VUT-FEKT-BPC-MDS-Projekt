@@ -31,17 +31,14 @@ function App() {
     parseStat("https://mds.vofy.tech/stat").then((data) => {
       const availableStreams = data.map((name) => {
         const stream = inputs.find((input) => input.uuid === name);
-
         return {
           name: stream.name,
           uuid: stream.uuid,
           thumbnail: "https://mds.vofy.tech/hls/" + stream.uuid + ".jpeg",
           stream: "https://mds.vofy.tech/hls/" + stream.uuid + ".m3u8",
-          rtmp: "rtmp://mds.vofy.tech/live/" + stream.uuid
+          rtmp: "rtmp://mds.vofy.tech/hls/" + stream.uuid + "_720",
         };
       });
-
-      console.log(availableStreams);
 
       setStreams(availableStreams);
     });
@@ -62,7 +59,7 @@ function App() {
         >
           <MdError size={50} />
           <Heading as="h1" size="lg" margin={8}>
-            Není vysílaný žádný přenos
+            Nebylo nalezeno žádné vysílání
           </Heading>
         </Flex>
       )}

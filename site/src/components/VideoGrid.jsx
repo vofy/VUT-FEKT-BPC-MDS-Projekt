@@ -24,10 +24,7 @@ const Video = (props) => {
   const [data, setData] = useRecoilState(videoModalDataState);
 
   const handleModalOpen = () => {
-    setData({
-      name: props.name,
-      uuid: props.uuid,
-    });
+    setData(props.stream);
     props.onVideoModalOpen();
   };
 
@@ -77,13 +74,13 @@ const Video = (props) => {
           _groupHover={{ display: "block" }}
         >
           <AspectRatio ratio={16 / 9}>
-              <Replay
-                source={props.stream}
-                initialPlaybackProps={{ isPaused: false, isMuted: true }}
-                options={replayOptions}
-              >
-                <HlsjsVideoStreamer />
-              </Replay>
+            <Replay
+              source={props.stream}
+              initialPlaybackProps={{ isPaused: false, isMuted: true }}
+              options={replayOptions}
+            >
+              <HlsjsVideoStreamer />
+            </Replay>
           </AspectRatio>
         </Box>
         <Heading as="h1" size="md" m={4}>
