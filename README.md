@@ -55,9 +55,10 @@ make install
 cd ../..
 ```
 
-# Sestavení produkční verze aplikace
+# Stažení závislostí a sestavení produkční verze aplikace
 ```sh
 cd /var/pexel/site
+npm i
 npm run build
 ```
 

@@ -47,3 +47,7 @@ body {
 .replay-slider {
   visibility: hidden !important;
 }
+
+.replay-narrow .replay-controls-bar {
+  height: unset !important;
+}
