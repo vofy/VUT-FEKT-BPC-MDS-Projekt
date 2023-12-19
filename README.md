@@ -9,12 +9,13 @@ chown -R www-data:www-data pexel
 
 Prerekvizitou je přítomnost prostředí python. V GNU/Linux balíky `python3` nebo `python` a balíky. Ve windows instalace pomocí PE dostupné na url adrese [Python Releases for Windows | Python.org](https://www.python.org/downloads/windows/). Také je vyžadována přítomnost balíkového manažeru pip v linuxu obvykle balíky `python3-pip` nebo `python-pip`.
 
-## Instalace pythonu a stažení závislostí
+## Instalace pythonu, npm a stažení závislostí
 
 Příklad instalace a stažení závislostí v distribuci ArchLinux
 
+
 ```sh
-sudo pacman -Syu python python-pip
+pacman -Syu python python-pip npm
 cd /var/pexel/ffmpeg-streams
 python -m venv venv
 source ./venv/bin/activate
@@ -52,6 +53,12 @@ cd nginx-1.25.3
 make
 make install
 cd ../..
+```
+
+# Sestavení produkční verze aplikace
+```sh
+cd /var/pexel/site
+npm run build
 ```
 
 # Příprava a povolení a spuštění démonů
