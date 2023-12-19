@@ -69,7 +69,7 @@ export default function VideoModal(props) {
             </Replay>
             <Spacer my={5} />
             <Heading as="h2" size="sm" my={2}>
-              RTMP stream
+              Stream v nejvyší dostupné kvalitě
             </Heading>
             <Code my={1}>{data.rtmp}</Code>
             <Button my={1} onClick={onCopy}>
