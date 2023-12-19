@@ -23,20 +23,22 @@ function App() {
 
   useEffect(() => {
     let inputs = [];
+    const mediaServer = import.meta.env.VITE_MEDIA_SERVER;
+    console.log('HOST:', mediaServer);
 
-    parseConfig("https://mds.vofy.tech/config.toml").then((data) => {
+    parseConfig(mediaServer+ "/config.toml").then((data) => {
       inputs = data;
     });
 
-    parseStat("https://mds.vofy.tech/stat").then((data) => {
+    parseStat(mediaServer + "/stat").then((data) => {
       const availableStreams = data.map((name) => {
         const stream = inputs.find((input) => input.uuid === name);
         return {
           name: stream.name,
           uuid: stream.uuid,
-          thumbnail: "https://mds.vofy.tech/hls/" + stream.uuid + ".jpeg",
-          stream: "https://mds.vofy.tech/hls/" + stream.uuid + ".m3u8",
-          rtmp: "rtmp://mds.vofy.tech/hls/" + stream.uuid + "_720",
+          thumbnail: mediaServer + "/hls/" + stream.uuid + ".jpeg",
+          stream: mediaServer + "/hls/" + stream.uuid + ".m3u8",
+          rtmp: mediaServer + "/hls/" + stream.uuid + "_720",
         };
       });
 
