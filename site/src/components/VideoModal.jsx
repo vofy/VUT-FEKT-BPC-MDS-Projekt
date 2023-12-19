@@ -27,7 +27,18 @@ export default function VideoModal(props) {
         src: "https://mds.vofy.tech/hls/" + data.uuid + ".m3u8",
         type: "application/x-mpegURL",
       },
-    ]
+    ],
+    plugins: {
+      qualityLevels: {},
+      hlsQualitySelector: { displayCurrentQuality: true },
+    },
+    html5: {
+      hls: {
+        enableLowInitialPlaylist: true,
+        smoothQualityChange: true,
+        overrideNative: true,
+      },
+    },
   };
 
   const handlePlayerReady = (player) => {

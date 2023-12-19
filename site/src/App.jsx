@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { Heading, Flex, useDisclosure, Spacer } from "@chakra-ui/react";
+import { Heading, Flex, useDisclosure } from "@chakra-ui/react";
 import "@fontsource/poppins";
 import { MdError } from "react-icons/md";
-
-import getAvailableStreams from "./lib/available-streams";
+import { parseConfig, parseStat } from "./lib/parse";
 
 import VideoGrid from "./components/VideoGrid";
 import Header from "./components/Header";
@@ -20,14 +19,28 @@ function App() {
 
   useEffect(() => {
     document.title = "Pexel";
-    setStreams(getAvailableStreams());
-    console.log(getAvailableStreams());
+  }, []);
+
+  useEffect(() => {
+    let inputs = [];
+
+    parseConfig("https://mds.vofy.tech/config.toml").then((data) => {
+      inputs = data;
+    });
+
+    parseStat("https://mds.vofy.tech/stat").then((data) => {
+      const availableStreams = data.map((name) =>
+        inputs.find((input) => input.uuid === name)
+      );
+
+      setStreams(availableStreams);
+    });
   }, []);
 
   return (
     <>
       <Header />
-      {streams.length > 0 ? (
+      {streams?.length > 0 ? (
         <VideoGrid streams={streams} onVideoModalOpen={onVideoModalOpen} />
       ) : (
         <Flex
@@ -38,7 +51,9 @@ function App() {
           height={"100%"}
         >
           <MdError size={50} />
-          <Heading as='h1' size='lg' margin={8}>Není vysílaný žádný přenos</Heading>
+          <Heading as="h1" size="lg" margin={8}>
+            Není vysílaný žádný přenos
+          </Heading>
         </Flex>
       )}
 

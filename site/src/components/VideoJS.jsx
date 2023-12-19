@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import videojs from "video.js";
 import "video.js/dist/video-js.css";
-import videojsqualityselector from "videojs-hls-quality-selector";
+import qualityLevels from "videojs-contrib-quality-levels";
+import hlsQualitySelector from "videojs-hls-quality-selector";
 
 export default function VideoJS(props) {
   const videoRef = React.useRef(null);
@@ -10,6 +11,8 @@ export default function VideoJS(props) {
   const { options, onReady } = props;
 
   React.useEffect(() => {
+    videojs.registerPlugin("hlsQualitySelector", hlsQualitySelector);
+
     // Make sure Video.js player is only initialized once
     if (!playerRef.current) {
       // The Video.js player needs to be _inside_ the component el for React 18 Strict Mode.
@@ -29,10 +32,6 @@ export default function VideoJS(props) {
       const player = playerRef.current;
 
       player.autoplay(options.autoplay);
-      player.hlsQualitySelector = videojsqualityselector;
-      player.hlsQualitySelector({
-        displayCurrentQuality: true,
-      });
       player.src(options.sources);
     }
   }, [options, videoRef]);
