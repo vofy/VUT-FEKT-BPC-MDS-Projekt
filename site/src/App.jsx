@@ -60,7 +60,7 @@ function App() {
           height={"100%"}
         >
           <MdError size={50} />
-          <Heading as="h1" size="lg" margin={8}>
+          <Heading textAlign={"center"} as="h1" size="lg" margin={8}>
             Nebylo nalezeno žádné vysílání
           </Heading>
         </Flex>
