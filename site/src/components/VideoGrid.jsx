@@ -76,13 +76,15 @@ const Video = (props) => {
           display="none"
           _groupHover={{ display: "block" }}
         >
-          <Replay
-            source={"https://mds.vofy.tech/hls/" + props.uuid + ".m3u8"}
-            initialPlaybackProps={{ isPaused: false, isMuted: true }}
-            options={replayOptions}
-          >
-            <HlsjsVideoStreamer />
-          </Replay>
+          <AspectRatio ratio={16 / 9}>
+              <Replay
+                source={"https://mds.vofy.tech/hls/" + props.uuid + ".m3u8"}
+                initialPlaybackProps={{ isPaused: false, isMuted: true }}
+                options={replayOptions}
+              >
+                <HlsjsVideoStreamer />
+              </Replay>
+          </AspectRatio>
         </Box>
         <Heading as="h1" size="md" m={4}>
           {props.name}

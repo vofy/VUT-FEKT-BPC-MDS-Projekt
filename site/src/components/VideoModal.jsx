@@ -37,8 +37,9 @@ export default function VideoModal(props) {
     controls: {
       includeControls: [
         "playPauseButton",
-        "gotoLiveButton",
         "timeDisplay",
+        'timeline',
+        "gotoLiveButton",
         "qualitySelector",
         "fullscreenButton",
       ],
