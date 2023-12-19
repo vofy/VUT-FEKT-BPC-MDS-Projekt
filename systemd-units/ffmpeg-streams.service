@@ -5,8 +5,8 @@ Wants=network-online.target
 
 [Service]
 Type=forking
-WorkingDirectory=/var/BPC-MDS-Projekt
-ExecStart=/var/BPC-MDS-Projekt/venv/bin/python /var/BPC-MDS-Projekt/ffmpeg-streams.py
+WorkingDirectory=/var/pexel/ffmpeg-streams
+ExecStart=/var/pexel/ffmpeg-streams/venv/bin/python /var/pexel/ffmpeg-streams/main.py
 KillSignal=SIGQUIT
 TimeoutStopSec=5
 KillMode=mixed

@@ -4,45 +4,23 @@ cd /var
 git clone https://github.com/Vofy/VUT-FEKT-BPC-MDS-Projekt pexel
 ```
 
-# Instalace závislostí
+# Příprava skriptu pro streamování
 
 Prerekvizitou je přítomnost prostředí python. V GNU/Linux balíky `python3` nebo `python` a balíky. Ve windows instalace pomocí PE dostupné na url adrese [Python Releases for Windows | Python.org](https://www.python.org/downloads/windows/). Také je vyžadována přítomnost balíkového manažeru pip v linuxu obvykle balíky `python3-pip` nebo `python-pip`.
 
-## UNIX/MacOS
-
-### Instalace
+## Instalace pythonu a stažení závislostí
 
 Příklad instalace v distribuci ArchLinux
 
 ```sh
 sudo pacman -Syu python python-pip
-```
-
-### Stažení závislostí
-
-```sh
-cd cesta/k/projektu
+cd /var/pexel/ffmpeg-streams
 python -m venv venv
 source ./venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Windows (netestováno)
-
-### Instalace
-
-Instalace ve Windows je realizována pomocí instalačního průvodce dostupného na url adrese: [Python Releases for Windows | Python.org](https://www.python.org/downloads/windows/)
-
-### Stažení závislostí
-
-```sh
-cd cesta/k/projektu
-python -m venv .venv
-.venv\bin\Activate.bat
-python -m pip install -r requirements.txt
-```
-
-## Kompilace nginx
+# Kompilace nginx
 
 ```sh
 mkdir nginx-mod
@@ -70,4 +48,11 @@ cd nginx-1.25.3
 make
 make install
 cd ../..
+```
+
+# Příprava a povolení a spuštění démonů
+```sh
+cd /var/pexel
+sudo ln -s /var/pexel/systemd-units /etc/systemd/system/pexel
+sudo systemctl enable --now ffmpeg-streams.service nginx-mod.serivce
 ```
