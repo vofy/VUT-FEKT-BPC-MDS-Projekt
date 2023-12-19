@@ -10,7 +10,7 @@ Prerekvizitou je přítomnost prostředí python. V GNU/Linux balíky `python3` 
 
 ## Instalace pythonu a stažení závislostí
 
-Příklad instalace v distribuci ArchLinux
+Příklad instalace a stažení závislostí v distribuci ArchLinux
 
 ```sh
 sudo pacman -Syu python python-pip
@@ -18,6 +18,7 @@ cd /var/pexel/ffmpeg-streams
 python -m venv venv
 source ./venv/bin/activate
 pip install -r requirements.txt
+deactivate
 ```
 
 # Kompilace nginx
@@ -53,7 +54,6 @@ cd ../..
 
 # Příprava a povolení a spuštění démonů
 ```sh
-cd /var/pexel
-sudo ln -s /var/pexel/systemd-units /etc/systemd/system/pexel
-sudo systemctl enable --now ffmpeg-streams.service nginx-mod.serivce
+sudo ln -s /var/pexel/systemd-units/* /etc/systemd/system/
+sudo systemctl enable --now ffmpeg-streams nginx-mod
 ```

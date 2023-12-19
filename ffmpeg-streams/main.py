@@ -10,7 +10,7 @@ def assign_uuids(streams):
             stream["uuid"] = str(uuid.uuid4())
 
 def main():
-    CONFIG_PATH = "./config.toml"
+    CONFIG_PATH = "./../config.toml"
 
     config = toml.load(CONFIG_PATH)
 
