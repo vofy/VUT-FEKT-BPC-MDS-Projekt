@@ -2,6 +2,7 @@
 ```sh
 cd /var
 git clone https://github.com/Vofy/VUT-FEKT-BPC-MDS-Projekt pexel
+chown -R www-data:www-data pexel
 ```
 
 # Příprava skriptu pro streamování
