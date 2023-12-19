@@ -73,6 +73,6 @@ button:focus-visible {
   }
 }
 
-.vjs-tech {
-  object-fit: cover !important;
+.chakra-card .replay-controls-bar {
+  display: none !important;
 }

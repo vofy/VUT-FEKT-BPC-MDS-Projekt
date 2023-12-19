@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Heading, Flex, useDisclosure } from "@chakra-ui/react";
+import { Heading, Flex, useDisclosure, Box } from "@chakra-ui/react";
 import "@fontsource/poppins";
 import { MdError } from "react-icons/md";
 import { parseConfig, parseStat } from "./lib/parse";

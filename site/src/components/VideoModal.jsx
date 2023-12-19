@@ -10,48 +10,32 @@ import {
 } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
 import { videoModalDataState } from "./../state/atoms";
-import VideoJS from "./VideoJS";
-import React from "react";
+
+import { Replay } from "vimond-replay";
+import "vimond-replay/index.css";
+import HlsjsVideoStreamer from "vimond-replay/video-streamer/hlsjs";
 
 export default function VideoModal(props) {
   const [data, setData] = useRecoilState(videoModalDataState);
-  const playerRef = React.useRef(null);
 
-  const videoJsOptions = {
-    responsive: true,
-    controls: true,
-    autoplay: true,
-    fluid: true,
-    sources: [
-      {
-        src: "https://mds.vofy.tech/hls/" + data.uuid + ".m3u8",
-        type: "application/x-mpegURL",
-      },
-    ],
-    plugins: {
-      qualityLevels: {},
-      hlsQualitySelector: { displayCurrentQuality: true },
-    },
-    html5: {
-      hls: {
-        enableLowInitialPlaylist: true,
-        smoothQualityChange: true,
-        overrideNative: true,
+  const replayOptions = {
+    videoStreamer: {
+      hlsjs: {
+        customConfiguration: {
+          capLevelToPlayerSize: true,
+          maxBufferLength: 45,
+        },
       },
     },
-  };
-
-  const handlePlayerReady = (player) => {
-    playerRef.current = player;
-
-    // You can handle player events here, for example:y
-    player.on("waiting", () => {
-      //videojs.log("player is waiting");
-    });
-
-    player.on("dispose", () => {
-      //videojs.log("player will dispose");
-    });
+    controls: {
+      includeControls: [
+        "playPauseButton",
+        "gotoLiveButton",
+        "timeDisplay",
+        "qualitySelector",
+        "fullscreenButton",
+      ],
+    },
   };
 
   return (
@@ -62,7 +46,13 @@ export default function VideoModal(props) {
         <ModalCloseButton marginY={1.5} />
         <ModalBody padding={0}>
           <Box maxWidth={"100vh"} padding={4} paddingTop={0}>
-            <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
+            <Replay
+              source={"https://mds.vofy.tech/hls/" + data.uuid + ".m3u8"}
+              initialPlaybackProps={{ isPaused: false }}
+              options={replayOptions}
+            >
+              <HlsjsVideoStreamer />
+            </Replay>
           </Box>
         </ModalBody>
       </ModalContent>

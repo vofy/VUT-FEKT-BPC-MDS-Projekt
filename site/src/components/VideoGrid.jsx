@@ -13,43 +13,15 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { FiCameraOff } from "react-icons/fi";
-import VideoJS from "./VideoJS";
-import React from "react";
 import { useRecoilState } from "recoil";
 import { videoModalDataState } from "../state/atoms";
 
+import { Replay } from "vimond-replay";
+import "vimond-replay/index.css";
+import HlsjsVideoStreamer from "vimond-replay/video-streamer/hlsjs";
+
 const Video = (props) => {
-  const playerRef = React.useRef(null);
-
   const [data, setData] = useRecoilState(videoModalDataState);
-
-  const videoJsOptions = {
-    responsive: true,
-    autoplay: true,
-    muted: true,
-    controls: false,
-    fluid: true,
-    aspectRatio: "16:9",
-    sources: [
-      {
-        src: "https://mds.vofy.tech/hls/" + props.uuid + ".m3u8",
-        type: "application/x-mpegURL",
-      },
-    ],
-  };
-
-  const handlePlayerReady = (player) => {
-    playerRef.current = player;
-
-    // You can handle player events here, for example:y
-    player.on("waiting", () => {
-      //videojs.log("player is waiting");
-    });
-
-    player.on("dispose", () => {
-      //videojs.log("player will dispose");
-    });
-  };
 
   const handleModalOpen = () => {
     setData({
@@ -57,6 +29,20 @@ const Video = (props) => {
       uuid: props.uuid,
     });
     props.onVideoModalOpen();
+  };
+
+  const replayOptions = {
+    videoStreamer: {
+      hlsjs: {
+        customConfiguration: {
+          capLevelToPlayerSize: true,
+          maxBufferLength: 45,
+        },
+      },
+    },
+    controls: {
+      includeControls: [],
+    },
   };
 
   return (
@@ -90,7 +76,13 @@ const Video = (props) => {
           display="none"
           _groupHover={{ display: "block" }}
         >
-          <VideoJS options={videoJsOptions} onReady={handlePlayerReady} />
+          <Replay
+            source={"https://mds.vofy.tech/hls/" + props.uuid + ".m3u8"}
+            initialPlaybackProps={{ isPaused: false, isMuted: true }}
+            options={replayOptions}
+          >
+            <HlsjsVideoStreamer />
+          </Replay>
         </Box>
         <Heading as="h1" size="md" m={4}>
           {props.name}

@@ -28,7 +28,8 @@
     "videojs-contrib-hls": "^5.15.0",
     "videojs-contrib-quality-levels": "^4.0.0",
     "videojs-hls-quality-selector": "^1.1.4",
-    "videojs-quality-picker": "^0.0.3"
+    "videojs-quality-picker": "^0.0.3",
+    "vimond-replay": "^3.3.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",
