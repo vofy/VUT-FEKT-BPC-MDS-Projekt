@@ -42,6 +42,7 @@ export default function VideoModal(props) {
         "gotoLiveButton",
         "qualitySelector",
         "fullscreenButton",
+        "volume"
       ],
     },
   };
