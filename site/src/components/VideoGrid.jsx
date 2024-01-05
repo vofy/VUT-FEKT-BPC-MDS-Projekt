@@ -108,6 +108,8 @@ export default function VideoGrid(props) {
       }}
       gap={6}
       p={5}
+      h={"100%"}
+      overflowY={"auto"}
     >
       {props.streams &&
         props.streams.map(
