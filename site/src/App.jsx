@@ -58,6 +58,7 @@ function App() {
           alignItems={"center"}
           justifyContent={"center"}
           height={"100%"}
+          overflowY={"auto"}
         >
           <MdError size={50} />
           <Heading textAlign={"center"} as="h1" size="lg" margin={8}>
