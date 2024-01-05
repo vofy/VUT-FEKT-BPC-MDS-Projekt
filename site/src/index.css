@@ -44,7 +44,7 @@ body {
   height: unset;
 }
 
-.replay-slider {
+.replay-slider.replay-timeline {
   visibility: hidden !important;
 }
 
