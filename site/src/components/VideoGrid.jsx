@@ -108,6 +108,7 @@ export default function VideoGrid(props) {
       }}
       gap={6}
       p={5}
+      paddingBottom={"96px"}
       h={"100%"}
       overflowY={"auto"}
     >
