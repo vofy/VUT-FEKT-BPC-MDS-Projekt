@@ -36,19 +36,19 @@ tar -xvf nginx-1.25.3.tar.gz
 cd nginx-1.25.3
 
 ./configure \
-    --prefix=/var/pexel \
+	--prefix=/var/pexel \
 	--sbin-path=/usr/sbin/nginx-mod \
 	--modules-path=/usr/lib/nginx-mod/modules \
-    --conf-path=/var/pexel/nginx-conf/nginx.conf \
-    --http-client-body-temp-path=/var/lib/nginx-mod/body \
-    --http-fastcgi-temp-path=/var/lib/nginx-mod/fastcgi \
-    --http-proxy-temp-path=/var/lib/nginx-mod/proxy \
-    --http-scgi-temp-path=/var/lib/nginx-mod/scgi \
-    --http-uwsgi-temp-path=/var/lib/nginx-mod/uwsgi \
-    --error-log-path=/var/log/nginx-mod/error.log \
-    --http-log-path=/var/log/nginx-mod/access.log \
-    --with-http_v2_module \
-    --add-module=../nginx-rtmp-module
+	--conf-path=/var/pexel/nginx-conf/nginx.conf \
+	--http-client-body-temp-path=/var/lib/nginx-mod/body \
+	--http-fastcgi-temp-path=/var/lib/nginx-mod/fastcgi \
+	--http-proxy-temp-path=/var/lib/nginx-mod/proxy \
+	--http-scgi-temp-path=/var/lib/nginx-mod/scgi \
+	--http-uwsgi-temp-path=/var/lib/nginx-mod/uwsgi \
+	--error-log-path=/var/log/nginx-mod/error.log \
+	--http-log-path=/var/log/nginx-mod/access.log \
+	--with-http_v2_module \
+	--add-module=../nginx-rtmp-module
 
 make
 make install
